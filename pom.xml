@@ -8,6 +8,10 @@
     <artifactId>reactor-netty-jersey</artifactId>
     <version>1.0</version>
 
+    <packaging>jar</packaging>
+    <name>reactor-netty-jersey</name>
+    <description>reactor-netty expand support jersey2.x </description>
+    <url>https://github.com/StonyShi/reactor-netty-jersey</url>
 
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -205,11 +209,20 @@
             </properties>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <!--<version>3.8.0</version>-->
+                        <configuration>
+                            <source>${jdk.version}</source>
+                            <target>${jdk.version}</target>
+                        </configuration>
+                    </plugin>
                     <!-- Source -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
+                        <!--<version>2.2.1</version>-->
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -287,8 +300,8 @@
 
     <scm>
         <url>https://github.com/StonyShi/reactor-netty-jersey</url>
-        <connection>scm:git:https://git@github.com/StonyShi/reactor-netty-jersey.git</connection>
-        <developerConnection>scm:git:https://git@github.com/StonyShi/reactor-netty-jersey.git</developerConnection>
+        <connection>scm:git:https://github.com/StonyShi/reactor-netty-jersey</connection>
+        <developerConnection>scm:git:https://github.com/StonyShi/reactor-netty-jersey</developerConnection>
     </scm>
     <developers>
         <developer>
