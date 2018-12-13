@@ -1,0 +1,19 @@
+/target
+target/
+.idea/
+/.idea
+/.settings
+.iml
+*.iml
+.classpath
+*.class
+**/.settings
+**/.classpath
+**/.project
+.DS_Store
+
+# Package Files #
+*.war
+*.ear
+*.iml
+*.idea
