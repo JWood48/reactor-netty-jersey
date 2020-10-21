@@ -26,6 +26,8 @@ public class ClientTest {
 
     @Test
     public void test_13(){
+        System.out.println("TEST13...");
+
         WebTarget target = client.target("http://127.0.0.1:8084/api/list");
 
         System.out.println(target.request().get(String.class));
@@ -33,12 +35,14 @@ public class ClientTest {
 
     @Test
     public void test_30(){
+        System.out.println("TEST30...");
         WebTarget target = api.path("sex").queryParam("name", "bule");
         System.out.println(target.request().get(String.class));
     }
 
     @Test
     public void test_36() {
+        System.out.println("TEST36...");
         Response response = api.path("post").register(JacksonProvider.class)
                 .request()
                 .post(Entity.entity(new UserTest("le", 10, "jiu"), MediaType.APPLICATION_JSON_TYPE));

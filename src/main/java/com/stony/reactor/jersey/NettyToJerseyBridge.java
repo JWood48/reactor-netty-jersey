@@ -1,15 +1,5 @@
 package com.stony.reactor.jersey;
 
-import org.glassfish.jersey.internal.PropertiesDelegate;
-import org.glassfish.jersey.server.ContainerRequest;
-import org.glassfish.jersey.server.spi.ContainerResponseWriter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import reactor.ipc.netty.http.server.HttpServerRequest;
-import reactor.ipc.netty.http.server.HttpServerResponse;
-
-import javax.ws.rs.core.Application;
-import javax.ws.rs.core.SecurityContext;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,6 +7,17 @@ import java.security.Principal;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.ws.rs.core.SecurityContext;
+
+import org.glassfish.jersey.internal.PropertiesDelegate;
+import org.glassfish.jersey.server.ContainerRequest;
+import org.glassfish.jersey.server.spi.ContainerResponseWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import reactor.netty.http.server.HttpServerRequest;
+import reactor.netty.http.server.HttpServerResponse;
 
 /**
  * <p>reactor-netty-jersey

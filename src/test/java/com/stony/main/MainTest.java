@@ -9,7 +9,7 @@ import org.glassfish.jersey.server.ServerProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
-import reactor.ipc.netty.http.server.HttpServer;
+import reactor.netty.http.server.HttpServer;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -28,11 +28,13 @@ import java.nio.file.Paths;
 public class MainTest {
 
     private static final Logger logger = LoggerFactory.getLogger(MainTest.class);
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) throws Exception {
 
         final Path resource = Paths.get(MainTest.class.getResource("/public").toURI());
-        HttpServer.create(opts -> opts.port(8084))
-                .startAndAwait(JerseyBasedHandler.builder()
+
+        HttpServer.create()
+                .port(8084)
+                .handle(JerseyBasedHandler.builder()
                         .property(ServerProperties.TRACING, "ON_DEMAND")
                         .property(ServerProperties.TRACING_THRESHOLD, "SUMMARY")
                         .register(JacksonProvider.class)
@@ -58,7 +60,16 @@ public class MainTest {
                                                 .sendString(Mono.just(req.params().toString()));
                                     });
                         })
-                        .build()
-                );
+                        .build())
+                .bindNow();
+
+
+                Thread.sleep(1000*1000);
+
+            ;
+
+
+
+
     }
 }

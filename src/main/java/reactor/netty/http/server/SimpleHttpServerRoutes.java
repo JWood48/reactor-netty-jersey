@@ -1,26 +1,26 @@
-package reactor.ipc.netty.http.server;
-
-import com.stony.reactor.jersey.MimeType;
-import com.stony.reactor.jersey.MimeTypeUtil;
-import org.reactivestreams.Publisher;
-import reactor.core.Exceptions;
-import reactor.core.publisher.Mono;
-import reactor.ipc.netty.http.server.HttpPredicate;
-import reactor.ipc.netty.http.server.HttpServerRequest;
-import reactor.ipc.netty.http.server.HttpServerResponse;
-import reactor.ipc.netty.http.server.HttpServerRoutes;
+package reactor.netty.http.server;
 
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+
+import com.stony.reactor.jersey.MimeType;
+import com.stony.reactor.jersey.MimeTypeUtil;
+
+import org.reactivestreams.Publisher;
+
+import reactor.core.Exceptions;
+import reactor.core.publisher.Mono;
+//import reactor.netty.http.server.HttpPredicate;
+
 
 /**
  * <p>reactor-netty-ext
@@ -47,14 +47,17 @@ public class SimpleHttpServerRoutes implements HttpServerRoutes {
 
     @Override
     public HttpServerRoutes get(String path, BiFunction<? super HttpServerRequest, ? super HttpServerResponse, ? extends Publisher<Void>> handler) {
-        return route(SimpleHttpPredicate.get(path), handler);
+        return route(HttpPredicate.get(path), handler);
     }
 
     @Override
-    public HttpServerRoutes directory(String uri, Path directory,
-                                      Function<HttpServerResponse, HttpServerResponse> interceptor) {
+    public HttpServerRoutes directory(
+            String uri,
+            Path directory,
+            Function<HttpServerResponse, HttpServerResponse> interceptor) {
         Objects.requireNonNull(directory, "directory");
         this.staticDirectory = directory;
+
         return route(HttpPredicate.prefix(uri), (req, resp) -> {
 
             String prefix = URI.create(req.uri())
@@ -87,7 +90,8 @@ public class SimpleHttpServerRoutes implements HttpServerRoutes {
 
         if (condition instanceof HttpPredicate) {
             handlers.add(new HttpRouteHandler(condition, handler, (HttpPredicate) condition));
-        } else if (condition instanceof SimpleHttpPredicate) {
+        } else
+        if (condition instanceof SimpleHttpPredicate) {
             handlers.add(new HttpRouteHandler(condition, handler, (SimpleHttpPredicate) condition));
         } else {
             handlers.add(new HttpRouteHandler(condition, handler, null));

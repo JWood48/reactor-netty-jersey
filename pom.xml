@@ -16,7 +16,7 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <log.version>2.8.1</log.version>
-        <jersey.version>2.27</jersey.version>
+        <jersey.version>2.30.1</jersey.version>
         <maven.compiler.source>${jdk.version}</maven.compiler.source>
         <maven.compiler.target>${jdk.version}</maven.compiler.target>
         <maven.compiler.compilerVersion>${jdk.version}</maven.compiler.compilerVersion>
@@ -147,19 +147,19 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>3.1.2.RELEASE</version>
+            <version>3.3.10.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>3.1.2.RELEASE</version>
+            <version>3.3.10.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.projectreactor.ipc</groupId>
+            <groupId>io.projectreactor.netty</groupId>
             <artifactId>reactor-netty</artifactId>
-            <version>0.7.2.RELEASE</version>
+            <version>0.9.12.RELEASE</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -1,4 +1,4 @@
-package reactor.ipc.netty.http.server;
+package reactor.netty.http.server;
 
 import io.netty.handler.codec.http.HttpMethod;
 import io.netty.handler.codec.http.HttpVersion;

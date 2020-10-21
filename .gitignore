@@ -17,3 +17,5 @@ target/
 *.ear
 *.iml
 *.idea
+/.factorypath
+/debug.log
