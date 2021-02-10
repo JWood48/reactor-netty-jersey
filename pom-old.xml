@@ -166,6 +166,7 @@
 
 
     <profiles>
+            <!-- 
         <profile>
             <id>dev</id>
             <activation>
@@ -200,6 +201,7 @@
                 </snapshotRepository>
             </distributionManagement>
         </profile>
+             -->
         <profile>
             <id>release</id>
             <properties>
@@ -276,6 +278,7 @@
                     </plugin>
                 </plugins>
             </build>
+            <!--
             <distributionManagement>
                 <repository>
                     <id>oss</id>
@@ -286,6 +289,7 @@
                     <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
+            -->
         </profile>
     </profiles>
 

@@ -19,3 +19,6 @@ target/
 *.idea
 /.factorypath
 /debug.log
+.gradle/
+build/
+bin/
