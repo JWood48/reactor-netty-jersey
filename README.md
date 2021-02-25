@@ -1,9 +1,4 @@
 ### reactor-netty-jersey
-#### 1. [reactor-netty](https://github.com/reactor/reactor-netty)  jersey2.x的扩展
-#### 2. 扩展get方法支持get?p=1 的方式访问
-#### 3. 支持静态资源不加配置前缀（如不加: `/res` ）
-#### 4. 增加对原有路由全桥接，支持静态文件访问
-### 代码示例：
 ```
 <dependency>
   <groupId>com.github.stonyshi</groupId>
