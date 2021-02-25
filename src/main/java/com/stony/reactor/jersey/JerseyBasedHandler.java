@@ -105,6 +105,7 @@ public class JerseyBasedHandler implements BiFunction<HttpServerRequest, HttpSer
         String appName;
         List<String> packages = new ArrayList<>();
         Set<Class<?>> providers = new HashSet<>(16);
+        Set<Object> instances = new HashSet<>(16);
         Map<String, Object> properties = new HashMap<>(64);
 
         Consumer<HttpServerRoutes> routesBuilder;
@@ -117,6 +118,10 @@ public class JerseyBasedHandler implements BiFunction<HttpServerRequest, HttpSer
         public Builder register(Class<?> provider) {
             providers.add(provider);
             return this;
+        }
+        public Builder registerInstance(Object instance) {
+        	instances.add(instance);
+        	return this;
         }
         public Builder packages(final String... packs) {
             for (String pack : packs) {
@@ -138,8 +143,12 @@ public class JerseyBasedHandler implements BiFunction<HttpServerRequest, HttpSer
             if(appName != null) {
                 config.setApplicationName(appName);
             }
+            
             if(providers != null) {
                 providers.stream().forEach(config::register);
+            }
+            if(instances != null) {
+            	instances.stream().forEach(config::register);
             }
             if(properties != null && !properties.isEmpty()) {
                 config.addProperties(properties);
